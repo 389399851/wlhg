@@ -1,0 +1,15 @@
+
+server:
+  port: 10002
+spring:
+  application:
+    name: admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/ttshop?characterEncoding=utf-8&serverTimezone=UTC
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9090/eureka
+feign:
+  hystrix:
+    enabled: true

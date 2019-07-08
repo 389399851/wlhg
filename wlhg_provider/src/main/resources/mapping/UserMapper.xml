@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yd.taozi.mapper.UserMapper">
+<resultMap id="userMap" type="com.yd.taozi.pojo.User">
+    <id property="uid" column="UID"/>
+    <result property="uname" column="UNAME"/>
+    <result property="upw" column="UPW"/>
+    <result property="type" column="TYPE"/>
+</resultMap>
+    <sql id="userSql">
+        UID,
+        UNAME,
+        UPW,
+        TYPE
+    </sql>
+    <insert id="insertUser" >
+       INSERT
+       INTO
+       USER
+       (uname,type,upw)
+       VALUES
+       (#{uname},#{type},#{upw})
+    </insert>
+    <select id="findUserByName" resultMap="userMap">
+        SELECT
+        <include refid="userSql"/>
+        FROM
+        USER
+        WHERE
+        UNAME=#{username}
+    </select>
+</mapper>
